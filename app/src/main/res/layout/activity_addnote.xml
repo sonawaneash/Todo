@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Addnote">
+
+    <EditText
+        android:id="@+id/title"
+        android:padding="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:hint="Enter Title"
+        />
+
+    <EditText
+        android:id="@+id/content"
+        android:padding="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:hint="Enter content"
+
+        />
+
+    <Button
+        android:id="@+id/updateNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Temp Update Button"
+        android:layout_below="@id/content"
+        android:layout_marginTop="400sp"
+        />
+
+
+</RelativeLayout>
