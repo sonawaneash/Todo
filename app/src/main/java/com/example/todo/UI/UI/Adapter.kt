@@ -1,23 +1,32 @@
 package com.example.todo.UI.UI
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
 
 //Adapter class will adapt our data so that it can be displayed in a list
-class Adapter(val todoList: List<ListItem>): RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter( private val context: Context, private val listener: ItemClickAdapter): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
-    override fun onCreateViewHolder(p: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(p.context).inflate(R.layout.list_item, p, false) //inflate() turns layout file to view obj
+    private val todoList: ArrayList<ListItem>
+        get() {
+            TODO()
+        }
 
-        return  ViewHolder(itemView)
+    override fun onCreateViewHolder(p: ViewGroup, viewType: Int): ItemViewHolder {
+        val viewHolder = ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item, p, false) ) //inflate() turns layout file to view obj
+        viewHolder.btnDelete.setOnClickListener {
+            listener.onItemClicked(todoList[viewHolder.adapterPosition])
+        }
+        return  viewHolder
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentitem: ListItem = todoList[position]
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val currentitem = todoList[position]
         holder.tvItemName.text = currentitem.itemName //itemName from Item data class created
         holder.tvItemData.text = currentitem.itemData
     }
@@ -26,10 +35,15 @@ class Adapter(val todoList: List<ListItem>): RecyclerView.Adapter<Adapter.ViewHo
         return todoList.size
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) { //ViewHolder will hold the view and helps in recycling. It represents single row in list
+    inner class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) { //ViewHolder will hold the view and helps in recycling. It represents single row in list
         val tvItemName: TextView = itemView.findViewById(R.id.tvItemName) //= itemView.tvItemName
         val tvItemData: TextView = itemView.findViewById(R.id.tvItemData)
+        val btnDelete: ImageView = itemView.findViewById(R.id.btnDelete)
     }
 
 }
 
+//to handle clicks we create interface
+interface ItemClickAdapter{
+    fun onItemClicked(item: ListItem)
+}
