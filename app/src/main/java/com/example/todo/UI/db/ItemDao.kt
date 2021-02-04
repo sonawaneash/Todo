@@ -13,6 +13,6 @@ interface ItemDao {
     fun delete(item: Item)
 
     @Query("SELECT * FROM items_table")
-    fun getAllItems():LiveData<List<Item>>
+    fun getAllItems(): LiveData<List<Item>>
 
 }

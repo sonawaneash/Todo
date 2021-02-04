@@ -8,14 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
+import com.example.todo.UI.db.Item
 
 //Adapter class will adapt our data so that it can be displayed in a list
 class Adapter( private val context: Context, private val listener: ItemClickAdapter): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
-    private val todoList: ArrayList<ListItem>
-        get() {
-            TODO()
-        }
+    private val todoList: ArrayList<ListItem>()
 
     override fun onCreateViewHolder(p: ViewGroup, viewType: Int): ItemViewHolder {
         val viewHolder = ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item, p, false) ) //inflate() turns layout file to view obj
@@ -39,6 +37,13 @@ class Adapter( private val context: Context, private val listener: ItemClickAdap
         val tvItemName: TextView = itemView.findViewById(R.id.tvItemName) //= itemView.tvItemName
         val tvItemData: TextView = itemView.findViewById(R.id.tvItemData)
         val btnDelete: ImageView = itemView.findViewById(R.id.btnDelete)
+    }
+
+    fun updateList(newList: List<Item>){
+        todoList.clear()
+        todoList.addAll(newList)
+
+        notifyDataSetChanged()
     }
 
 }
