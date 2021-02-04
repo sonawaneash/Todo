@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         val examplelist = generateList()
 
         var recycler_view = findViewById(R.id.recycler_view) as RecyclerView
-        recycler_view.adapter = Adapter(examplelist)
-        recycler_view.layoutManager = LinearLayoutManager(this)
 
+        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.adapter = Adapter(examplelist)
 
         val btnAdd = findViewById<FloatingActionButton>(R.id.btnAdd)
 
