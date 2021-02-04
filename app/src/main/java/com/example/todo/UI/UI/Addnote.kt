@@ -1,10 +1,11 @@
-package com.example.todo
+package com.example.todo.UI.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Button
+import com.example.todo.R
 
 class Addnote : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +17,7 @@ class Addnote : AppCompatActivity() {
         val updateNote=findViewById<Button>(R.id.updateNote)
 
         updateNote.setOnClickListener{
-            val intent=Intent(this,UpdateNote::class.java)
+            val intent=Intent(this, UpdateNote::class.java)
             startActivity(intent)
         }
 

@@ -1,8 +1,9 @@
-package com.example.todo
+package com.example.todo.UI.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import com.example.todo.R
 
 class UpdateNote : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
