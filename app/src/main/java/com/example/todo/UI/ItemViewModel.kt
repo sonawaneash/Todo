@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.todo.UI.UI.ListItem
 import com.example.todo.UI.db.Item
 import com.example.todo.UI.db.ItemDatabase
 import com.example.todo.UI.db.ItemRepository
@@ -23,11 +22,11 @@ class ItemViewModel(application : Application): AndroidViewModel(application) {
     }
 
     //coroutine to delete item
-    fun deleteItem(item: ListItem) = viewModelScope.launch(Dispatchers.IO) {
-        repository.delete(item)
+    fun deleteItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(item) // viewModel will call delete fn from repository which is suspend fn
     }
 
-    fun insertItem(item: ListItem) = viewModelScope.launch(Dispatchers.IO) {
+    fun insertItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(item)
     }
 }

@@ -7,10 +7,10 @@ import androidx.room.*
 @Dao
 interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(item: Item)
+    suspend fun insert(item: Item)
 
     @Delete
-    fun delete(item: Item)
+    suspend fun delete(item: Item)
 
     @Query("SELECT * FROM items_table")
     fun getAllItems(): LiveData<List<Item>>

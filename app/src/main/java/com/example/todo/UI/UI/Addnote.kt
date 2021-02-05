@@ -1,3 +1,4 @@
+/*
 package com.example.todo.UI.UI
 
 import android.content.Intent
@@ -28,7 +29,7 @@ class Addnote : AppCompatActivity() {
 
         this.setTitle("Create ToDo")
 
-        val recycler_view = findViewById(R.id.recycler_view) as RecyclerView
+        val recycler_view = findViewById(R.id.recyclerView) as RecyclerView
         recycler_view.layoutManager = LinearLayoutManager(this)
         val adapter = Adapter(this, this)
         recycler_view.adapter = adapter
@@ -64,10 +65,9 @@ class Addnote : AppCompatActivity() {
         return true
 
     }
-
-
-
-
 }
+*/
+
+
 
 
