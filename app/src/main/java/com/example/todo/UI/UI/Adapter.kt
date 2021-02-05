@@ -16,9 +16,15 @@ class Adapter(private val listener: ItemClickAdapter, private val allitems: Arra
 
     override fun onCreateViewHolder(p: ViewGroup, viewType: Int): ItemViewHolder {
         val viewHolder = ItemViewHolder(LayoutInflater.from(p.context).inflate(R.layout.list_item, p, false) ) //inflate() turns layout file to view obj
+
         viewHolder.btnDelete.setOnClickListener {
-            listener.onItemClicked(allitems[viewHolder.adapterPosition])
+            listener.onItemDeleted(allitems[viewHolder.adapterPosition])
         }
+
+//        viewHolder.btnUpdate.setOnClickListener {
+  //          listener.onItemDeleted(allitems[viewHolder.adapterPosition])
+    //    }
+
         return  viewHolder
     }
 
@@ -26,6 +32,10 @@ class Adapter(private val listener: ItemClickAdapter, private val allitems: Arra
         val currentitem = allitems[position]
         holder.tvItemName.text = currentitem.title //title and content from Item data class created
         holder.tvItemData.text = currentitem.content
+
+        holder.itemView.setOnClickListener{
+            listener.onItemUpdated(currentitem)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -49,5 +59,6 @@ class Adapter(private val listener: ItemClickAdapter, private val allitems: Arra
 
 //to handle clicks we create interface
 interface ItemClickAdapter{
-    fun onItemClicked(item: Item)
+    fun onItemDeleted(item: Item)
+    fun onItemUpdated(item: Item)
 }

@@ -1,6 +1,7 @@
 package com.example.todo.UI.db
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 
@@ -14,5 +15,8 @@ interface ItemDao {
 
     @Query("SELECT * FROM items_table")
     fun getAllItems(): LiveData<List<Item>>
+
+    @Update
+    suspend fun updateItem(item: Item)
 
 }

@@ -67,28 +67,17 @@ class Addnote : AppCompatActivity() {
 
 
 
-/*
-    //Adds menu into acionbar if present
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-        menuInflater.inflate(R.menu.main,menu)
-
-        return true
-
-    }
-*/
 
     fun submitData() {
         val itemText = addNotetitle.text.toString()
         val itemContent = addNotecontent.text.toString()
         if (itemText.isNotEmpty()) {
             viewModel.insertItem((Item(itemText, itemContent)))
-            Toast.makeText(this,"item inserted", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "item inserted", Toast.LENGTH_LONG).show()
         }
-        if (itemContent.isNotEmpty())
-            viewModel.insertItem((Item(itemText, itemContent)))
-    }
 
+    }
 
 }
 

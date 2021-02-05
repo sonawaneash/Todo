@@ -1,6 +1,7 @@
 package com.example.todo.UI.db
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 class ItemRepository(private val itemDao: ItemDao) {
 
@@ -13,6 +14,10 @@ class ItemRepository(private val itemDao: ItemDao) {
 
     suspend fun delete(item: Item){
         itemDao.delete(item)
+    }
+
+    suspend fun updateItem(item: Item){
+        itemDao.updateItem(item)
     }
 
 }
