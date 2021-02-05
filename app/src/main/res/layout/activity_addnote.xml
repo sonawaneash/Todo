@@ -7,7 +7,7 @@
     tools:context=".UI.UI.Addnote">
 
     <EditText
-        android:id="@+id/title"
+        android:id="@+id/addNotetitle"
         android:padding="15sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,24 +16,22 @@
         />
 
     <EditText
-        android:id="@+id/content"
+        android:id="@+id/addNotecontent"
         android:padding="15sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
+        android:layout_below="@id/addNotetitle"
         android:hint="Enter content"
 
         />
 
-    <Button
-        android:id="@+id/updateNote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:layout_below="@id/content"
-        android:layout_marginTop="400sp"
-        android:onClick="submitData"
-        />
-
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        android:id="@+id/saveNote"
+       android:layout_below="@id/addNotecontent"
+       android:layout_marginTop="100sp"
+        android:text="Save Data"
+       />
 
 </RelativeLayout>
