@@ -18,15 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class MainActivity : AppCompatActivity(), ItemClickAdapter {
 
     lateinit var viewModel : ItemViewModel
-    lateinit var title: EditText
-    lateinit var content: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title = findViewById(R.id.intitle)
-        content = findViewById(R.id.incontent)
 
         val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -42,7 +38,7 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
         })
 
 
-/*
+
         //floating button
         val btnAdd = findViewById<FloatingActionButton>(R.id.btnAdd)
         btnAdd.setOnClickListener {
@@ -50,7 +46,7 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
             startActivity(intent)
         }
 
- */
+
 
     }
 
@@ -61,14 +57,6 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
         Toast.makeText(this,"item deleted", Toast.LENGTH_LONG).show()
     }
 
-    fun saveData(view: View) {  //whrn Save button clicked this fn called
-        val itemText = title.text.toString()
-        val itemContent = title.text.toString()
-        if (itemText.isNotEmpty()) {
-            viewModel.insertItem((Item(itemText, itemContent)))
-            Toast.makeText(this,"item inserted", Toast.LENGTH_LONG).show()
-        }
-    }
 
 
 
