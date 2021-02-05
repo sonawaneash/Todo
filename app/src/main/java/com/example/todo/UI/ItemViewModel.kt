@@ -3,6 +3,7 @@ package com.example.todo.UI
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.todo.UI.db.Item
 import com.example.todo.UI.db.ItemDatabase
@@ -14,6 +15,7 @@ class ItemViewModel(application : Application): AndroidViewModel(application) {
 
     val allItems: LiveData<List<Item>>
     val repository: ItemRepository
+
 
     init{
         val dao = ItemDatabase.getDatabase(application).getItemDao()
@@ -28,5 +30,9 @@ class ItemViewModel(application : Application): AndroidViewModel(application) {
 
     fun insertItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(item)
+    }
+
+    fun updateItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
+        repository.updateItem(item)
     }
 }
