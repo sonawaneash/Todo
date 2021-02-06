@@ -25,7 +25,16 @@ class UpdateNote : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_note)
 
+        val adapter = Adapter(MainActivity(), ArrayList())
         this.setTitle("Update ToDo Note")
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(ItemViewModel::class.java)
+        viewModel.allItems.observe(this, Observer {    // list can be nulluble
+                list -> list?.let{
+            adapter.updateList(it)      //update only when list not null
+        }
+
+        })
+
 
         updateTitle =findViewById<EditText>(R.id.updateTitle)
         updateContent=findViewById<EditText>(R.id.updateContent)
@@ -67,7 +76,7 @@ class UpdateNote : AppCompatActivity() {
 
 }
 /*
- val adapter = Adapter(MainActivity(), ArrayList())
+        val adapter = Adapter(MainActivity(), ArrayList())
         viewModel =ViewModelProvider(this).get(ItemViewModel::class.java)
 
 
