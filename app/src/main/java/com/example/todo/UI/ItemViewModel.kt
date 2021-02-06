@@ -3,18 +3,20 @@ package com.example.todo.UI
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.todo.UI.db.Item
 import com.example.todo.UI.db.ItemDatabase
 import com.example.todo.UI.db.ItemRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.lifecycle.MutableLiveData as LifecycleMutableLiveData
 
 class ItemViewModel(application : Application): AndroidViewModel(application) {
 
     val allItems: LiveData<List<Item>>
+   
     val repository: ItemRepository
+
 
 
     init{
@@ -30,6 +32,10 @@ class ItemViewModel(application : Application): AndroidViewModel(application) {
 
     fun insertItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(item)
+    }
+
+    fun setUpdate(item: Item){
+
     }
 
     fun updateItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {

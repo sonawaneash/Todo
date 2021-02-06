@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/updateTitle"
         android:hint="Enter content"
-        android:text=""
+
         />
 
     <Button
@@ -33,5 +33,10 @@
         android:layout_below="@id/updateContent"
         />
 
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
 </RelativeLayout>

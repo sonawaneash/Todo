@@ -61,11 +61,19 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
     override fun onItemUpdated(item: Item) {
        //val btnUpdate = findViewById<Button>(R.id.btnUpdate)
        // btnUpdate.setOnClickListener {}
+
+
+
         val intent = Intent(this, UpdateNote::class.java)
-        startActivity(intent)
         val id = item.id
-        //intent.putExtra("title", i.toString())
-        Toast.makeText(this,"${id} Clicked", Toast.LENGTH_LONG).show()
+        val title=item.title
+        val content= item.content
+        intent.putExtra("id", id)
+        intent.putExtra("title", title.toString())
+        intent.putExtra("content", content.toString())
+
+        startActivity(intent)
+        Toast.makeText(this,"$id Clicked", Toast.LENGTH_LONG).show()
     }
 
 
