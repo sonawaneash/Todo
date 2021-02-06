@@ -27,8 +27,45 @@ class UpdateNote : AppCompatActivity() {
 
         this.setTitle("Update ToDo Note")
 
+        updateTitle =findViewById<EditText>(R.id.updateTitle)
+        updateContent=findViewById<EditText>(R.id.updateContent)
 
 
+        val btnUpdate = findViewById<Button>(R.id.btnUpdate)
+
+        val title1 = intent.getStringExtra("title").toString()
+        val content1 = intent.getStringExtra("content")
+        val id = intent.getStringExtra("id")
+
+        updateTitle.setText(title1)
+        updateContent.setText(content1)
+
+
+
+        btnUpdate.setOnClickListener{
+
+            updatesubmit()
+        }
+
+
+    }
+
+   fun updatesubmit() {
+       var uTitle =updateTitle.text.toString()
+       var uContent=updateContent.text.toString()
+
+
+       if (updateTitle!=null) {
+
+           viewModel.updateItem((Item(uTitle,uContent)))
+           Toast.makeText(this, "Updated", Toast.LENGTH_LONG).show()
+       }
+
+
+    }
+
+
+}
 /*
  val adapter = Adapter(MainActivity(), ArrayList())
         viewModel =ViewModelProvider(this).get(ItemViewModel::class.java)
@@ -43,43 +80,3 @@ class UpdateNote : AppCompatActivity() {
 
         })
 */
-         updateTitle =findViewById<EditText>(R.id.updateTitle)
-        updateContent=findViewById<EditText>(R.id.updateContent)
-
-
-            val btnUpdate = findViewById<Button>(R.id.btnUpdate)
-             btnUpdate.setOnClickListener{
-
-                 updatesubmit()
-             }
-
-
-        val title1 = intent.getStringExtra("title").toString()
-        val content1 = intent.getStringExtra("content")
-        val id = intent.getStringExtra("id")
-
-        updateTitle.setText(title1)
-        updateContent.setText(content1)
-
-
-
-
-    }
-
-   fun updatesubmit() {
-       var uTitle =updateTitle.text.toString()
-       var uContent=updateContent.text.toString()
-
-
-       if (updateTitle!=null) {
-
-
-           viewModel.updateItem((Item(uTitle,uContent)))
-           Toast.makeText(this, "Updated", Toast.LENGTH_LONG).show()
-       }
-
-
-    }
-
-
-}
