@@ -1,15 +1,14 @@
-package com.example.todo.UI
+package com.example.todo.TODO_LIST.View_Model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.todo.UI.db.Item
-import com.example.todo.UI.db.ItemDatabase
-import com.example.todo.UI.db.ItemRepository
+import com.example.todo.TODO_LIST.Model.Item
+import com.example.todo.TODO_LIST.db.ItemDatabase
+import com.example.todo.TODO_LIST.Repository.ItemRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import androidx.lifecycle.MutableLiveData as LifecycleMutableLiveData
 
 class ItemViewModel(application : Application): AndroidViewModel(application) {
 

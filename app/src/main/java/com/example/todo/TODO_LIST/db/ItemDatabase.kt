@@ -1,5 +1,6 @@
-package com.example.todo.UI.db
+package com.example.todo.TODO_LIST.db
 
+import com.example.todo.TODO_LIST.Model.Item
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room

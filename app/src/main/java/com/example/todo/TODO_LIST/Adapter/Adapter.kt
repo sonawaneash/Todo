@@ -1,4 +1,4 @@
-package com.example.todo.UI.UI
+package com.example.todo.TODO_LIST.UI
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
-import com.example.todo.UI.db.Item
+import com.example.todo.TODO_LIST.Model.Item
 
 //Adapter class will adapt our data so that it can be displayed in a list
 class Adapter(private val listener: ItemClickAdapter, private val allitems: ArrayList<Item>): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
