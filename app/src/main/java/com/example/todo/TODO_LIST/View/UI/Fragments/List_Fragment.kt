@@ -15,6 +15,7 @@ import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.UI.ItemClickAdapter
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
+import kotlinx.android.synthetic.main.fragment_header.*
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
@@ -25,18 +26,6 @@ class List_Fragment : Fragment(), ItemClickAdapter {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
-
-
-        /*
-        //floating button
-        val addFragment = NoteAddFragment()
-            btnAdd.setOnClickListener {
-            val intent = Intent(getActivity(), Addnote::class.java)
-            startActivity(intent)
-        }
-*/
 
     }
 
@@ -56,16 +45,13 @@ class List_Fragment : Fragment(), ItemClickAdapter {
             list?.let {
                 adapter.updateList(it)      //update only when list not null
             }
-
         })
+
 
         btnAdd.setOnClickListener{
             val addFragment = NoteAddFragment()
-            //val bundle = bundleOf(Pair("key", "value"))
-            //addFragment.arguments = bundle
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, addFragment)?.addToBackStack(null)?.commit()
 
-            Toast.makeText(context, "Clicked", Toast.LENGTH_LONG).show()
         }
 
     }
@@ -80,7 +66,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
 
     override fun onItemDeleted(item: Item) {
         viewModel.deleteItem(item)
-        Toast.makeText(getActivity(), "Note Deleted", Toast.LENGTH_LONG).show()
+        Toast.makeText(getActivity(), "Successfully Deleted", Toast.LENGTH_LONG).show()
 
     }
 
@@ -90,7 +76,6 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         val bundle = bundleOf(Pair("id", item.id),Pair("title", item.title), Pair("content", item.content))
         updateFragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, updateFragment)?.addToBackStack(null)?.commit()
-
         Toast.makeText(context, "$id Clicked", Toast.LENGTH_LONG).show()
     }
 

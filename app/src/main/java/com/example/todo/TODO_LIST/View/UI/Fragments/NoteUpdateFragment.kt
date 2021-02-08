@@ -30,18 +30,12 @@ class NoteUpdateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = Adapter(List_Fragment(), ArrayList())
 
         viewModel = ViewModelProvider(this).get(
             ItemViewModel::class.java)
-        viewModel.allItems.observe(viewLifecycleOwner, Observer {    // list can be nulluble
-                list -> list?.let{
-            adapter.updateList(it)      //update only when list not null
-        }
 
-        })
-
-
+        updateTitle.setText(arguments?.getString("title", ""))
+        updateContent.setText(arguments?.getString("content", ""))
 
         btnUpdate.setOnClickListener{
             updatesubmit()
@@ -51,38 +45,43 @@ class NoteUpdateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_note_update, container, false)
     }
 
 
     fun updatesubmit() {
-        var uContent=arguments?.getString("content", "")
-        var id = arguments?.getInt("id", -1)
-        var uTitle = arguments?.getString("title", "")
-        val builder = AlertDialog.Builder(context)
+        val uTitle = arguments?.getString("title", "")
+        val uContent=arguments?.getString("content", "")
+        val id = arguments?.getInt("id", -1)
 
-        if (uTitle.isNullOrEmpty() || id == -1) {
+        val builder = AlertDialog.Builder(context)
+        var updateTitle = updateTitle.text.toString()
+        var updateContent = updateContent.text.toString()
+
+
+        if (updateTitle.isNullOrEmpty() || id == -1) {
             builder.setTitle("Update Note Title Cannot be Empty")
             builder.setPositiveButton("OK"){dialogInterface, which ->
                 Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
             }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
-            //Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
-        }else{
-            viewModel.updateItem(id!!,uTitle,uContent!!)
-            builder.setTitle("Note Updated Successfully")
-            builder.setPositiveButton("OK"){dialogInterface, which ->
-                activity?.supportFragmentManager?.popBackStack()
-               }
-            val alertDialog: AlertDialog = builder.create()
-            alertDialog.show()
-
+        }
+        else{
+            if( updateTitle == uTitle)
+                Toast.makeText(activity,"Data not Changed", Toast.LENGTH_LONG).show()
+            else {
+                viewModel.updateItem(id!!, updateTitle, updateContent)
+                builder.setTitle("Note Updated Successfully")
+                builder.setPositiveButton("OK") { dialogInterface, which ->
+                    activity?.supportFragmentManager?.popBackStack()
+                }
+                val alertDialog: AlertDialog = builder.create()
+                alertDialog.show()
             }
+        }
 
 
     }
-
 
 }
