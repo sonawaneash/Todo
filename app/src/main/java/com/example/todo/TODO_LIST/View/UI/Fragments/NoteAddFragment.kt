@@ -15,7 +15,8 @@ import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
-import kotlinx.android.synthetic.main.activity_addnote.*
+import kotlinx.android.synthetic.main.fragment_note_add.*
+
 
 class NoteAddFragment : Fragment() {
 
@@ -24,15 +25,21 @@ class NoteAddFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         saveNote.setOnClickListener{
-           // submitData()
+            submitData()
         }
-       //this.setTitle("Create ToDo Note")
+        //this.setTitle("Create ToDo Note")
         val adapter = Adapter(List_Fragment(), ArrayList())
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
+        viewModel = ViewModelProvider(this).get(
             ItemViewModel::class.java)
-        viewModel.allItems.observe(this, Observer {    // list can be nulluble
+        viewModel.allItems.observe(viewLifecycleOwner, Observer {    // list can be nulluble
                 list -> list?.let{
             adapter.updateList(it)      //update only when list not null
         }
@@ -40,8 +47,6 @@ class NoteAddFragment : Fragment() {
         })
 
     }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,7 +59,7 @@ class NoteAddFragment : Fragment() {
     fun submitData() {
         val itemText = addNotetitle.text.toString()
         val itemContent = addNotecontent.text.toString()
-        val builder = AlertDialog.Builder(getActivity())
+        val builder = AlertDialog.Builder(activity)
         if (itemText.isEmpty()) {
 
             builder.setTitle("Title Cannot be Empty")

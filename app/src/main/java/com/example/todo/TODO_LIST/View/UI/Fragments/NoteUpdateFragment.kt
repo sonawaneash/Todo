@@ -15,6 +15,7 @@ import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.android.synthetic.main.fragment_note_update.*
 
 
 class NoteUpdateFragment : Fragment() {
@@ -24,11 +25,16 @@ class NoteUpdateFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val adapter = Adapter(List_Fragment(), ArrayList())
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
+        viewModel = ViewModelProvider(this).get(
             ItemViewModel::class.java)
-        viewModel.allItems.observe(this, Observer {    // list can be nulluble
+        viewModel.allItems.observe(viewLifecycleOwner, Observer {    // list can be nulluble
                 list -> list?.let{
             adapter.updateList(it)      //update only when list not null
         }
@@ -36,20 +42,11 @@ class NoteUpdateFragment : Fragment() {
         })
 
 
-        val title1 = intent.getStringExtra("title").toString()
-        val content1 = intent.getStringExtra("content")
-        val id = intent.getStringExtra("id")
-
-        updateTitle.setText(title1)
-        updateContent.setText(content1)
 
         btnUpdate.setOnClickListener{
             updatesubmit()
         }
-
     }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,12 +57,12 @@ class NoteUpdateFragment : Fragment() {
 
 
     fun updatesubmit() {
-        var uTitle =updateTitle.text.toString()
-        var uContent=updateContent.text.toString()
-        val id = intent.getIntExtra("id",-1)
-        val builder = AlertDialog.Builder(this)
+        var uContent=arguments?.getString("content", "")
+        var id = arguments?.getInt("id", -1)
+        var uTitle = arguments?.getString("title", "")
+        val builder = AlertDialog.Builder(context)
 
-        if (uTitle.isEmpty()) {
+        if (uTitle.isNullOrEmpty() || id == -1) {
             builder.setTitle("Update Note Title Cannot be Empty")
             builder.setPositiveButton("OK"){dialogInterface, which ->
                 Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
@@ -74,17 +71,18 @@ class NoteUpdateFragment : Fragment() {
             alertDialog.show()
             //Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
         }else{
-            viewModel.updateItem(id,uTitle,uContent)
+            viewModel.updateItem(id!!,uTitle,uContent!!)
             builder.setTitle("Note Updated Successfully")
             builder.setPositiveButton("OK"){dialogInterface, which ->
-                Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
-            }
+                activity?.supportFragmentManager?.popBackStack()
+               }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
-            // Toast.makeText(this, "Note Updated Successfully", Toast.LENGTH_LONG).show()
-        }
+
+            }
 
 
     }
+
 
 }

@@ -1,6 +1,5 @@
 package com.example.todo.TODO_LIST.View.UI.Fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,7 @@ import com.example.todo.R
 import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.UI.ItemClickAdapter
-import com.example.todo.TODO_LIST.View.UI.InsertNote.Addnote
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
@@ -30,22 +27,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         super.onCreate(savedInstanceState)
 
         //val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(getActivity())
-        val adapter = Adapter(this, ArrayList())
-        recyclerView.adapter = adapter
 
-        viewModel = ViewModelProvider(
-            this, ViewModelProvider.AndroidViewModelFactory.getInstance(activity)
-        ).get(
-            ItemViewModel::class.java
-        )
-        viewModel.allItems.observe(this, Observer {    // list can be nulluble
-                list ->
-            list?.let {
-                adapter.updateList(it)      //update only when list not null
-            }
-
-        })
 
         /*
         //floating button
@@ -55,8 +37,38 @@ class List_Fragment : Fragment(), ItemClickAdapter {
             startActivity(intent)
         }
 */
+
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView?.layoutManager = LinearLayoutManager(context)
+        val adapter = Adapter(this, ArrayList())
+        recyclerView?.adapter = adapter
+
+        viewModel = ViewModelProvider(this).get(
+            ItemViewModel::class.java
+        )
+        viewModel.allItems.observe(viewLifecycleOwner, Observer {    // list can be nulluble
+                list ->
+            list?.let {
+                adapter.updateList(it)      //update only when list not null
+            }
+
+        })
+
+        btnAdd.setOnClickListener{
+            val addFragment = NoteAddFragment()
+            //val bundle = bundleOf(Pair("key", "value"))
+            //addFragment.arguments = bundle
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, addFragment)?.addToBackStack(null)?.commit()
+
+            Toast.makeText(context, "Clicked", Toast.LENGTH_LONG).show()
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,32 +77,22 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
-/*
+
     override fun onItemDeleted(item: Item) {
         viewModel.deleteItem(item)
         Toast.makeText(getActivity(), "Note Deleted", Toast.LENGTH_LONG).show()
-        //Toast.makeText(this,"Note Deleted Successfully", Toast.LENGTH_LONG).show()
 
     }
 
     override fun onItemUpdated(item: Item) {
-      /*  val intent = Intent(getActivity(), NoteUpdateFragment::class.java)
-        val id = item.id
-        val title=item.title
-        val content= item.content
-        intent.putExtra("id", id)
-        intent.putExtra("title", title.toString())
-        intent.putExtra("content", content.toString())
-        startActivity(intent)
-       */
-        val updateFragment = NoteUpdateFragment()gi
-        val bundle = bundleOf(Pair("key", "value"))
-        updateFragment.arguments = bundle
-        support
-        supportFragmentManager.beginTransaction().replace(R.id.FragmentContainer, updateFragment).commit()
 
-        Toast.makeText(getActivity(), "$id Clicked", Toast.LENGTH_LONG).show()
+        val updateFragment = NoteUpdateFragment()
+        val bundle = bundleOf(Pair("id", item.id),Pair("title", item.title), Pair("content", item.content))
+        updateFragment.arguments = bundle
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, updateFragment)?.addToBackStack(null)?.commit()
+
+        Toast.makeText(context, "$id Clicked", Toast.LENGTH_LONG).show()
     }
-*/
+
 
 }

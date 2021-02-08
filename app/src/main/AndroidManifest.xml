@@ -9,8 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Todo">
-        <activity android:name=".TODO_LIST.View.UI.UpdateNote.Updatenote"/>
-        <activity android:name=".TODO_LIST.View.UI.InsertNote.Addnote" />
         <activity android:name=".TODO_LIST.View.UI.Main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
