@@ -26,20 +26,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
-
-
-        /*
-        //floating button
-        val addFragment = NoteAddFragment()
-            btnAdd.setOnClickListener {
-            val intent = Intent(getActivity(), Addnote::class.java)
-            startActivity(intent)
-        }
-*/
-
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,8 +48,6 @@ class List_Fragment : Fragment(), ItemClickAdapter {
 
         btnAdd.setOnClickListener{
             val addFragment = NoteAddFragment()
-            //val bundle = bundleOf(Pair("key", "value"))
-            //addFragment.arguments = bundle
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, addFragment)?.addToBackStack(null)?.commit()
 
             Toast.makeText(context, "Clicked", Toast.LENGTH_LONG).show()
@@ -90,8 +75,6 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         val bundle = bundleOf(Pair("id", item.id),Pair("title", item.title), Pair("content", item.content))
         updateFragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, updateFragment)?.addToBackStack(null)?.commit()
-
-        Toast.makeText(context, "$id Clicked", Toast.LENGTH_LONG).show()
     }
 
 

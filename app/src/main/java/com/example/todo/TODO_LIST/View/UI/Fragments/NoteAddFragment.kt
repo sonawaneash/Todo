@@ -18,7 +18,7 @@ import com.example.todo.TODO_LIST.View_Model.ItemViewModel
 import kotlinx.android.synthetic.main.fragment_note_add.*
 
 
-class NoteAddFragment : Fragment() {
+class  NoteAddFragment : Fragment() {
 
     lateinit var viewModel: ItemViewModel
 
@@ -68,16 +68,15 @@ class NoteAddFragment : Fragment() {
             }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
-            // Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
+      git      // Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
         }else{
             viewModel.insertItem((Item(itemText, itemContent)))
             builder.setTitle("Note Created Successfully")
             builder.setPositiveButton("OK"){dialogInterface, which ->
-                makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
+                activity?.supportFragmentManager?.popBackStack()
             }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
-            // Toast.makeText(this, "Note Created Successfully", Toast.LENGTH_LONG).show()
         }
 
     }

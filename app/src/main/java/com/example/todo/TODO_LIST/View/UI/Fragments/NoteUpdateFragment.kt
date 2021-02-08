@@ -35,18 +35,18 @@ class NoteUpdateFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(
             ItemViewModel::class.java)
         viewModel.allItems.observe(viewLifecycleOwner, Observer {    // list can be nulluble
-                list -> list?.let{
-            adapter.updateList(it)      //update only when list not null
-        }
+            list -> list?.let{
+                adapter.updateList(it)      //update only when list not null
+            }
 
         })
-
 
 
         btnUpdate.setOnClickListener{
             updatesubmit()
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,7 +69,6 @@ class NoteUpdateFragment : Fragment() {
             }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
-            //Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
         }else{
             viewModel.updateItem(id!!,uTitle,uContent!!)
             builder.setTitle("Note Updated Successfully")
@@ -80,9 +79,6 @@ class NoteUpdateFragment : Fragment() {
             alertDialog.show()
 
             }
-
-
     }
-
 
 }

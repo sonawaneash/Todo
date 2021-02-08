@@ -13,8 +13,6 @@ import com.example.todo.TODO_LIST.View.UI.Fragments.List_Fragment
 //Adapter class will adapt our data so that it can be displayed in a list
 class Adapter(private val listener: List_Fragment, private val allitems: ArrayList<Item>): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
-    //private val allitems: ArrayList<Item>()
-
     override fun onCreateViewHolder(p: ViewGroup, viewType: Int): ItemViewHolder {
         val viewHolder = ItemViewHolder(LayoutInflater.from(p.context).inflate(R.layout.list_item, p, false) ) //inflate() turns layout file to view obj
 
@@ -22,9 +20,6 @@ class Adapter(private val listener: List_Fragment, private val allitems: ArrayLi
             listener.onItemDeleted(allitems[viewHolder.adapterPosition])
         }
 
-//        viewHolder.btnUpdate.setOnClickListener {
-  //          listener.onItemDeleted(allitems[viewHolder.adapterPosition])
-    //    }
 
         return  viewHolder
     }
