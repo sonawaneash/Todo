@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TODO_LIST.View.Addnote">
+    tools:context=".TODO_LIST.View.UI.InsertNote.Addnote">
 
     <EditText
         android:id="@+id/addNotetitle"

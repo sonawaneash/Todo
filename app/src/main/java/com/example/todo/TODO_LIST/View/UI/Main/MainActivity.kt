@@ -1,4 +1,4 @@
-package com.example.todo.TODO_LIST.View
+package com.example.todo.TODO_LIST.View.UI.Main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +13,8 @@ import com.example.todo.TODO_LIST.View_Model.ItemViewModel
 import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.UI.ItemClickAdapter
+import com.example.todo.TODO_LIST.View.UI.InsertNote.Addnote
+import com.example.todo.TODO_LIST.View.UI.UpdateNote.UpdateNote
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity(), ItemClickAdapter {

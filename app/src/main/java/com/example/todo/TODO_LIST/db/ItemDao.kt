@@ -17,7 +17,7 @@ interface ItemDao {
     fun getAllItems(): LiveData<List<Item>>
 
 
-    @Update
-    suspend fun updateItem(item: Item)
+    @Query("Update Items_table SET title=:uTitle ,content=:uContent WHERE id=:id")
+    suspend fun updateItem(id:Int,uTitle:String,uContent:String)
 
 }

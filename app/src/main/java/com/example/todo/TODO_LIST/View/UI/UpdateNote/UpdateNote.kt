@@ -1,4 +1,4 @@
-package com.example.todo.TODO_LIST.View
+package com.example.todo.TODO_LIST.View.UI.UpdateNote
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +11,7 @@ import com.example.todo.R
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
 import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
+import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 
 class UpdateNote : AppCompatActivity() {
     lateinit var viewModel: ItemViewModel
@@ -60,11 +61,14 @@ class UpdateNote : AppCompatActivity() {
    fun updatesubmit() {
        var uTitle =updateTitle.text.toString()
        var uContent=updateContent.text.toString()
+       val id = intent.getIntExtra("id",-1)
 
 
-       if (updateTitle!=null) {
+       if (updateTitle!=null&&id!=-1) {
 
-           viewModel.updateItem((Item(uTitle,uContent)))
+           viewModel.updateItem(id,uTitle,uContent)
+
+
            Toast.makeText(this, "Updated", Toast.LENGTH_LONG).show()
        }
 

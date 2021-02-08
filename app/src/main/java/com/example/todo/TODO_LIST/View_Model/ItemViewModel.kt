@@ -1,6 +1,7 @@
 package com.example.todo.TODO_LIST.View_Model
 
 import android.app.Application
+import android.icu.text.CaseMap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -37,7 +38,7 @@ class ItemViewModel(application : Application): AndroidViewModel(application) {
 
     }
 
-    fun updateItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
-        repository.updateItem(item)
+    fun updateItem(id:Int,uTitle:String,uContent:String) = viewModelScope.launch(Dispatchers.IO) {
+        repository.updateItem(id,uTitle,uContent)
     }
 }

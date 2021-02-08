@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TODO_LIST.View.UpdateNote">
+    tools:context=".TODO_LIST.View.UI.UpdateNote.UpdateNote">
 
     <EditText
         android:id="@+id/updateTitle"

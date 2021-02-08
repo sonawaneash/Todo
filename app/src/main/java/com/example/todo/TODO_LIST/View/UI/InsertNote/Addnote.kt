@@ -1,5 +1,5 @@
 
-package com.example.todo.TODO_LIST.View
+package com.example.todo.TODO_LIST.View.UI.InsertNote
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +12,7 @@ import com.example.todo.R
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.Model.Item
+import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 
 class Addnote : AppCompatActivity() {
 
