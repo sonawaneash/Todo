@@ -20,7 +20,10 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 class List_Fragment : Fragment(), ItemClickAdapter {
 
+<<<<<<< HEAD:app/src/main/java/com/example/todo/TODO_LIST/View/UI/Fragments/ListFragment.kt
 class ListFragment : Fragment() {
+=======
+>>>>>>> Fragment:app/src/main/java/com/example/todo/TODO_LIST/View/UI/Fragments/List_Fragment.kt
 
     lateinit var viewModel : ItemViewModel
 
@@ -62,6 +65,8 @@ class ListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list, container, false)
+<<<<<<< HEAD:app/src/main/java/com/example/todo/TODO_LIST/View/UI/Fragments/ListFragment.kt
+=======
     }
 
     override fun onItemDeleted(item: Item) {
@@ -76,6 +81,7 @@ class ListFragment : Fragment() {
         val bundle = bundleOf(Pair("id", item.id),Pair("title", item.title), Pair("content", item.content))
         updateFragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, updateFragment)?.addToBackStack(null)?.commit()
+>>>>>>> Fragment:app/src/main/java/com/example/todo/TODO_LIST/View/UI/Fragments/List_Fragment.kt
     }
 
 
