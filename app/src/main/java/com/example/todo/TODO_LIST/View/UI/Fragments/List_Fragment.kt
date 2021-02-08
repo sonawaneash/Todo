@@ -84,7 +84,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         intent.putExtra("content", content.toString())
         startActivity(intent)
        */
-        val updateFragment = NoteUpdateFragment()
+        val updateFragment = NoteUpdateFragment()gi
         val bundle = bundleOf(Pair("key", "value"))
         updateFragment.arguments = bundle
         support
