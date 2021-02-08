@@ -15,11 +15,14 @@ import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.UI.ItemClickAdapter
 import com.example.todo.TODO_LIST.View.UI.Fragments.List_Fragment
+import com.example.todo.TODO_LIST.View.UI.Fragments.NoteAddFragment
+import com.example.todo.TODO_LIST.View.UI.Fragments.NoteUpdateFragment
 import com.example.todo.TODO_LIST.View.UI.InsertNote.Addnote
 import com.example.todo.TODO_LIST.View.UI.UpdateNote.Updatenote
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_list.*
 
-class MainActivity : AppCompatActivity(), ItemClickAdapter {
+class MainActivity : AppCompatActivity(), ItemClickAdapter  {
 
     lateinit var viewModel : ItemViewModel
 
@@ -31,8 +34,18 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
             val listFragment = List_Fragment()
             //val bundle = bundleOf(Pair("key", "value"))
             //listFragment.arguments = bundle
+
             supportFragmentManager.beginTransaction().replace(R.id.FragmentContainer, listFragment).commit()
 
+        }
+
+        btnAdd.setOnClickListener{
+            val addFragment = NoteAddFragment()
+            val bundle = bundleOf(Pair("key", "value"))
+            addFragment.arguments = bundle
+            supportFragmentManager.beginTransaction().replace(R.id.FragmentContainer, addFragment).commit()
+
+            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show()
         }
 
 /*
@@ -60,7 +73,7 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
 
     }
 
-    /*
+
     //activity will talk only to view/model
     // delete fn
     override fun onItemDeleted(item: Item) { // interface defined in adapter
@@ -81,6 +94,6 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
         startActivity(intent)
         Toast.makeText(this,"$id Clicked", Toast.LENGTH_LONG).show()
     }
- */
+
 
 }

@@ -14,6 +14,7 @@ import com.example.todo.R
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
+import kotlinx.android.synthetic.main.fragment_list.*
 
 
 class NoteUpdateFragment : Fragment() {
@@ -33,7 +34,6 @@ class NoteUpdateFragment : Fragment() {
         }
 
         })
-
 
 
         val title1 = intent.getStringExtra("title").toString()
@@ -68,7 +68,7 @@ class NoteUpdateFragment : Fragment() {
         if (uTitle.isEmpty()) {
             builder.setTitle("Update Note Title Cannot be Empty")
             builder.setPositiveButton("OK"){dialogInterface, which ->
-                Toast.makeText(applicationContext,"clicked yes", Toast.LENGTH_LONG).show()
+                Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
             }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
@@ -77,7 +77,7 @@ class NoteUpdateFragment : Fragment() {
             viewModel.updateItem(id,uTitle,uContent)
             builder.setTitle("Note Updated Successfully")
             builder.setPositiveButton("OK"){dialogInterface, which ->
-                Toast.makeText(applicationContext,"clicked yes", Toast.LENGTH_LONG).show()
+                Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
             }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()

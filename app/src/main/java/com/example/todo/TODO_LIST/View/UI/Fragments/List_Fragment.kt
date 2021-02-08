@@ -35,9 +35,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         recyclerView.adapter = adapter
 
         viewModel = ViewModelProvider(
-            this, ViewModelProvider.AndroidViewModelFactory.getInstance(
-                activity
-            )
+            this, ViewModelProvider.AndroidViewModelFactory.getInstance(activity)
         ).get(
             ItemViewModel::class.java
         )
@@ -49,13 +47,14 @@ class List_Fragment : Fragment(), ItemClickAdapter {
 
         })
 
+        /*
         //floating button
-
-        btnAdd.setOnClickListener {
+        val addFragment = NoteAddFragment()
+            btnAdd.setOnClickListener {
             val intent = Intent(getActivity(), Addnote::class.java)
             startActivity(intent)
         }
-
+*/
     }
 
 
@@ -66,7 +65,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
-
+/*
     override fun onItemDeleted(item: Item) {
         viewModel.deleteItem(item)
         Toast.makeText(getActivity(), "Note Deleted", Toast.LENGTH_LONG).show()
@@ -92,6 +91,6 @@ class List_Fragment : Fragment(), ItemClickAdapter {
 
         Toast.makeText(getActivity(), "$id Clicked", Toast.LENGTH_LONG).show()
     }
-
+*/
 
 }
