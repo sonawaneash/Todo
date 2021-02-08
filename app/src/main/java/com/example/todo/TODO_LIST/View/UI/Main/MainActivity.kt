@@ -15,7 +15,7 @@ import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.UI.ItemClickAdapter
 import com.example.todo.TODO_LIST.View.UI.InsertNote.Addnote
-import com.example.todo.TODO_LIST.View.UI.UpdateNote.UpdateNote
+import com.example.todo.TODO_LIST.View.UI.UpdateNote.Updatenote
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity(), ItemClickAdapter {
@@ -52,19 +52,12 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
     // delete fn
     override fun onItemDeleted(item: Item) { // interface defined in adapter
         viewModel.deleteItem(item)
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Note Deleted Successfully")
-        builder.setPositiveButton("OK"){dialogInterface, which ->
-            Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
-        }
-        val alertDialog: AlertDialog = builder.create()
-        alertDialog.show()
-        //Toast.makeText(this,"Note Deleted Successfully", Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"Note Deleted Successfully", Toast.LENGTH_LONG).show()
     }
 
     override fun onItemUpdated(item: Item) {
 
-        val intent = Intent(this, UpdateNote::class.java)
+        val intent = Intent(this, Updatenote::class.java)
         val id = item.id
         val title=item.title
         val content= item.content

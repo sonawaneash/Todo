@@ -14,7 +14,7 @@ import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 
-class UpdateNote : AppCompatActivity() {
+class Updatenote : AppCompatActivity() {
     lateinit var viewModel: ItemViewModel
     lateinit var updateTitle:EditText
     lateinit var updateContent:EditText
