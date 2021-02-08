@@ -5,10 +5,33 @@
     android:layout_height="match_parent"
     tools:context=".TODO_LIST.View.UI.Fragments.NoteAddFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/addNotetitle"
+        android:padding="15sp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:hint="Enter Title"
+        />
+
+    <EditText
+        android:id="@+id/addNotecontent"
+        android:padding="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addNotetitle"
+        android:hint="Enter content"
+
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveNote"
+        android:layout_below="@id/addNotecontent"
+        android:layout_marginTop="100sp"
+        android:text="Save Data"
+        />
+
 
 </FrameLayout>

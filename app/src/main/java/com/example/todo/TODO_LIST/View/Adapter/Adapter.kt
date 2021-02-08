@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
 import com.example.todo.TODO_LIST.Model.Item
+import com.example.todo.TODO_LIST.View.UI.Fragments.List_Fragment
 
 //Adapter class will adapt our data so that it can be displayed in a list
-class Adapter(private val listener: ItemClickAdapter, private val allitems: ArrayList<Item>): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
+class Adapter(private val listener: List_Fragment, private val allitems: ArrayList<Item>): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
     //private val allitems: ArrayList<Item>()
 

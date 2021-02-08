@@ -1,10 +1,10 @@
 package com.example.todo.TODO_LIST.View.UI.Main
 
-import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +14,7 @@ import com.example.todo.TODO_LIST.View_Model.ItemViewModel
 import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.UI.ItemClickAdapter
+import com.example.todo.TODO_LIST.View.UI.Fragments.List_Fragment
 import com.example.todo.TODO_LIST.View.UI.InsertNote.Addnote
 import com.example.todo.TODO_LIST.View.UI.UpdateNote.Updatenote
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -26,7 +27,15 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if(savedInstanceState == null){
+            val listFragment = List_Fragment()
+            //val bundle = bundleOf(Pair("key", "value"))
+            //listFragment.arguments = bundle
+            supportFragmentManager.beginTransaction().replace(R.id.FragmentContainer, listFragment).commit()
 
+        }
+
+/*
         val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = Adapter(this, ArrayList())
@@ -47,7 +56,11 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
             val intent = Intent(this, Addnote::class.java)
             startActivity(intent)
         }
+        */
+
     }
+
+    /*
     //activity will talk only to view/model
     // delete fn
     override fun onItemDeleted(item: Item) { // interface defined in adapter
@@ -68,6 +81,6 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
         startActivity(intent)
         Toast.makeText(this,"$id Clicked", Toast.LENGTH_LONG).show()
     }
-
+ */
 
 }

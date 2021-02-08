@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.todo.R
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
-import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 
