@@ -1,6 +1,7 @@
 
 package com.example.todo.TODO_LIST.View.UI.InsertNote
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -21,8 +22,6 @@ class Addnote : AppCompatActivity() {
     lateinit var addNotecontent: EditText
     lateinit var saveNote: Button
 
-   // val updateNote=findViewById<Button>(R.id.updateNote)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addnote)
@@ -34,13 +33,8 @@ class Addnote : AppCompatActivity() {
         saveNote.setOnClickListener{
             submitData()
         }
-
-        this.setTitle("Create ToDo")
-
-        //val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
-        //recyclerView.layoutManager = LinearLayoutManager(this)
+        this.setTitle("Create ToDo Note")
         val adapter = Adapter(MainActivity(), ArrayList())
-        //recyclerView.adapter = adapter
 
        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
            ItemViewModel::class.java)
@@ -50,29 +44,30 @@ class Addnote : AppCompatActivity() {
         }
 
         })
-
-
-   /*
-        updateNote.setOnClickListener{
-           val intent= Intent(this, UpdateNote::class.java)
-            startActivity(intent)
-        }
-
-*/
-
-
     }
-
-
-
-
 
     fun submitData() {
         val itemText = addNotetitle.text.toString()
         val itemContent = addNotecontent.text.toString()
-        if (itemText.isNotEmpty()) {
+        val builder = AlertDialog.Builder(this)
+        if (itemText.isEmpty()) {
+
+            builder.setTitle("Title Cannot be Empty")
+            builder.setPositiveButton("OK"){dialogInterface, which ->
+                Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
+            }
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.show()
+           // Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
+        }else{
             viewModel.insertItem((Item(itemText, itemContent)))
-            Toast.makeText(this, "item inserted", Toast.LENGTH_LONG).show()
+            builder.setTitle("Note Created Successfully")
+            builder.setPositiveButton("OK"){dialogInterface, which ->
+                Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
+            }
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.show()
+           // Toast.makeText(this, "Note Created Successfully", Toast.LENGTH_LONG).show()
         }
 
     }

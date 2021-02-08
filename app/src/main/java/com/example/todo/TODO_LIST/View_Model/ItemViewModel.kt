@@ -34,10 +34,6 @@ class ItemViewModel(application : Application): AndroidViewModel(application) {
         repository.insert(item)
     }
 
-    fun setUpdate(item: Item){
-
-    }
-
     fun updateItem(id:Int,uTitle:String,uContent:String) = viewModelScope.launch(Dispatchers.IO) {
         repository.updateItem(id,uTitle,uContent)
     }

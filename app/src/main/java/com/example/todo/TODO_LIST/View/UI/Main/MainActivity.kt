@@ -1,5 +1,6 @@
 package com.example.todo.TODO_LIST.View.UI.Main
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,31 +41,28 @@ class MainActivity : AppCompatActivity(), ItemClickAdapter {
 
         })
 
-
-
         //floating button
         val btnAdd = findViewById<FloatingActionButton>(R.id.btnAdd)
         btnAdd.setOnClickListener {
             val intent = Intent(this, Addnote::class.java)
             startActivity(intent)
         }
-
-
-
     }
-
     //activity will talk only to view/model
     // delete fn
     override fun onItemDeleted(item: Item) { // interface defined in adapter
         viewModel.deleteItem(item)
-        Toast.makeText(this,"item deleted", Toast.LENGTH_LONG).show()
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Note Deleted Successfully")
+        builder.setPositiveButton("OK"){dialogInterface, which ->
+            Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.show()
+        //Toast.makeText(this,"Note Deleted Successfully", Toast.LENGTH_LONG).show()
     }
 
     override fun onItemUpdated(item: Item) {
-       //val btnUpdate = findViewById<Button>(R.id.btnUpdate)
-       // btnUpdate.setOnClickListener {}
-
-
 
         val intent = Intent(this, UpdateNote::class.java)
         val id = item.id

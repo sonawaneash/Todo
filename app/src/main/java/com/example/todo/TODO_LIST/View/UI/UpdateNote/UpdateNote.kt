@@ -1,5 +1,6 @@
 package com.example.todo.TODO_LIST.View.UI.UpdateNote
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,8 +16,6 @@ import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 
 class UpdateNote : AppCompatActivity() {
     lateinit var viewModel: ItemViewModel
-
-//    lateinit var btnUpdate: Button
     lateinit var updateTitle:EditText
     lateinit var updateContent:EditText
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +34,8 @@ class UpdateNote : AppCompatActivity() {
         })
 
 
-        updateTitle =findViewById<EditText>(R.id.updateTitle)
-        updateContent=findViewById<EditText>(R.id.updateContent)
+        updateTitle =findViewById(R.id.updateTitle)
+        updateContent=findViewById(R.id.updateContent)
 
 
         val btnUpdate = findViewById<Button>(R.id.btnUpdate)
@@ -48,10 +47,7 @@ class UpdateNote : AppCompatActivity() {
         updateTitle.setText(title1)
         updateContent.setText(content1)
 
-
-
         btnUpdate.setOnClickListener{
-
             updatesubmit()
         }
 
@@ -62,14 +58,25 @@ class UpdateNote : AppCompatActivity() {
        var uTitle =updateTitle.text.toString()
        var uContent=updateContent.text.toString()
        val id = intent.getIntExtra("id",-1)
+       val builder = AlertDialog.Builder(this)
 
-
-       if (updateTitle!=null&&id!=-1) {
-
+       if (uTitle.isEmpty()) {
+           builder.setTitle("Update Note Title Cannot be Empty")
+           builder.setPositiveButton("OK"){dialogInterface, which ->
+               Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
+           }
+           val alertDialog: AlertDialog = builder.create()
+           alertDialog.show()
+           //Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
+       }else{
            viewModel.updateItem(id,uTitle,uContent)
-
-
-           Toast.makeText(this, "Updated", Toast.LENGTH_LONG).show()
+           builder.setTitle("Note Updated Successfully")
+           builder.setPositiveButton("OK"){dialogInterface, which ->
+               Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_LONG).show()
+           }
+           val alertDialog: AlertDialog = builder.create()
+           alertDialog.show()
+          // Toast.makeText(this, "Note Updated Successfully", Toast.LENGTH_LONG).show()
        }
 
 
@@ -77,6 +84,8 @@ class UpdateNote : AppCompatActivity() {
 
 
 }
+
+
 /*
         val adapter = Adapter(MainActivity(), ArrayList())
         viewModel =ViewModelProvider(this).get(ItemViewModel::class.java)
