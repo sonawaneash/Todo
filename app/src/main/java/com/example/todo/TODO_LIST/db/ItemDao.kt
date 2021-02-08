@@ -4,7 +4,6 @@ import com.example.todo.TODO_LIST.Model.Item
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
-
 @Dao
 interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
