@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.todo.R
 
 
-class List_Fragment : Fragment() {
+class ListFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class List_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recycler__view, container, false)
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
 
