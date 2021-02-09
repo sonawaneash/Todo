@@ -74,6 +74,7 @@ class NoteUpdateFragment : Fragment() {
                 viewModel.updateItem(id!!, updateTitle, updateContent)
                 builder.setTitle("Note Updated Successfully")
                 builder.setPositiveButton("OK") { dialogInterface, which ->
+                    Toast.makeText(getActivity(), "Item Updated", Toast.LENGTH_LONG).show()
                     activity?.supportFragmentManager?.popBackStack()
                 }
                 val alertDialog: AlertDialog = builder.create()

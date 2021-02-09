@@ -12,6 +12,7 @@ tools:context=".TODO_LIST.View.UI.Fragments.HeaderFragment">
     android:layout_height="50dp"
     android:background="@color/purple_500"
     app:title="ToDo List"
+    android:padding="5dp"
     android:id = "@+id/header"
     >
 

@@ -21,13 +21,10 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 class List_Fragment : Fragment(), ItemClickAdapter {
 
-
     lateinit var viewModel : ItemViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
 

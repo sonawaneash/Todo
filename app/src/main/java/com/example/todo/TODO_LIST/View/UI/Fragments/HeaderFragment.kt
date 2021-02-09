@@ -14,6 +14,7 @@ class HeaderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -22,5 +23,6 @@ class HeaderFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_header, container, false)
     }
+
 
 }

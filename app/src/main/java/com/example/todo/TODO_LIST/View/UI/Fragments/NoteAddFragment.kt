@@ -55,9 +55,7 @@ class NoteAddFragment : Fragment() {
         if (itemText.isEmpty()) {
 
             builder.setTitle("Title Cannot be Empty")
-            builder.setPositiveButton("OK"){dialogInterface, which ->
-                Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
-            }
+            builder.setPositiveButton("OK"){dialogInterface, which -> }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
         }
@@ -65,7 +63,7 @@ class NoteAddFragment : Fragment() {
             viewModel.insertItem((Item(itemText, itemContent)))
             builder.setTitle("Note Created Successfully")
             builder.setPositiveButton("OK"){dialogInterface, which ->
-                makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
+                makeText(getActivity(),"Item Added", Toast.LENGTH_LONG).show()
                 activity?.supportFragmentManager?.popBackStack()
                 }
             val alertDialog: AlertDialog = builder.create()
