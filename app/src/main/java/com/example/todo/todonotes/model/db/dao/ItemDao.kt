@@ -1,6 +1,6 @@
-package com.example.todo.todonotes.Model.db.dao
+package com.example.todo.todonotes.model.db.dao
 
-import com.example.todo.todonotes.Model.db.entity.Item
+import com.example.todo.todonotes.model.db.entity.Item
 import androidx.lifecycle.LiveData
 import androidx.room.*
 

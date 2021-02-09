@@ -1,11 +1,11 @@
-package com.example.todo.todonotes.Model
+package com.example.todo.todonotes.model
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.todo.todonotes.Model.db.dao.ItemDao
-import com.example.todo.todonotes.Model.db.entity.Item
+import com.example.todo.todonotes.model.db.dao.ItemDao
+import com.example.todo.todonotes.model.db.entity.Item
 
 @Database(entities = arrayOf(Item::class), version = 1)
  abstract class ItemDatabase : RoomDatabase() {

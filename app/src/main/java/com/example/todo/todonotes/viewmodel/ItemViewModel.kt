@@ -1,13 +1,13 @@
-package com.example.todo.todonotes.View_Model
+package com.example.todo.todonotes.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.todo.TODO_LIST.Model.Note
-import com.example.todo.todonotes.Model.db.entity.Item
-import com.example.todo.todonotes.Model.ItemDatabase
-import com.example.todo.todonotes.Repository.ItemRepository
+import com.example.todo.todonotes.model.db.entity.Item
+import com.example.todo.todonotes.model.ItemDatabase
+import com.example.todo.todonotes.model.repository.ItemRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

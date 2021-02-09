@@ -1,4 +1,4 @@
-package com.example.todo.todonotes.View.UI.Fragments
+package com.example.todo.todonotes.View.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -16,8 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.todo.R
 
 import com.example.todo.TODO_LIST.Model.Note
-import com.example.todo.todonotes.Model.db.entity.Item
-import com.example.todo.todonotes.View_Model.ItemViewModel
+import com.example.todo.todonotes.viewmodel.ItemViewModel
 import kotlinx.android.synthetic.main.fragment_note_add.*
 import kotlinx.android.synthetic.main.headerfragment.*
 

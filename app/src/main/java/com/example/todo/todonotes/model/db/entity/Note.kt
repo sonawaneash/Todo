@@ -1,9 +1,7 @@
 package com.example.todo.TODO_LIST.Model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.todo.todonotes.Model.db.entity.Item
+import com.example.todo.todonotes.model.db.entity.Item
 
 
 class Note (

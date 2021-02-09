@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".todonotes.View.UI.Fragments.NoteAddFragment">
+    tools:context=".todonotes.View.ui.fragments.NoteAddFragment">
 
     <include layout="@layout/headerfragment"
         android:id="@+id/header1"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/addNotecontent"
         android:layout_marginTop="39dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/purple_700"
         android:text="Save Data" />
 
 

@@ -1,4 +1,4 @@
-package com.example.todo.todonotes.View.UI.Fragments
+package com.example.todo.todonotes.View.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -13,7 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.todo.R
-import com.example.todo.todonotes.View_Model.ItemViewModel
+import com.example.todo.todonotes.viewmodel.ItemViewModel
 import kotlinx.android.synthetic.main.fragment_note_update.*
 import kotlinx.android.synthetic.main.headerfragment.*
 

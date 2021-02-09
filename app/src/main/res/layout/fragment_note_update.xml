@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".todonotes.View.UI.Fragments.NoteUpdateFragment">
+    tools:context=".todonotes.View.ui.fragments.NoteUpdateFragment">
 
     <include layout="@layout/headerfragment"
         android:id="@+id/header1"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnUpdate"
         android:text="Update"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/purple_700"
         android:layout_below="@id/updateContent"
         />
 
