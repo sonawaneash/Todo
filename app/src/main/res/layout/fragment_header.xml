@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+
+<!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id = "@+id/headerText"
+        android:text=" ToDo List"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:padding="2dp"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:backgroundTint="@color/purple_700"
+        />
+
+
+</LinearLayout>

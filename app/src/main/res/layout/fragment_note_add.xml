@@ -10,6 +10,8 @@
 
         />
 
+
+
     <EditText
         android:id="@+id/addNotetitle"
         android:layout_below="@+id/header1"

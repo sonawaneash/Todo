@@ -4,10 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="0sp"
-    tools:context=".todonotes.View.UI.Fragments.List_Fragment">
+    tools:context=".todonotes.View.UI.Fragments.ListFragment">
 
     <include layout="@layout/headerfragment"
         android:id="@+id/header" />
+
+    <include layout="@layout/fragment_header">
+
+    </include>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -18,7 +22,7 @@
         android:orientation="vertical"
         android:padding="10dp"
         tools:listitem="@layout/list_item"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="200dp"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -27,12 +31,11 @@
         android:id="@+id/btnAdd"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/ic_baseline_add"
         android:backgroundTint="@android:color/black"
         android:layout_margin="30dp"
         android:padding="10dp"
-
-
+        android:background="@color/black"
+        android:src="@drawable/ic_baseline_add"
         />
 
 
