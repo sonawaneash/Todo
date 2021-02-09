@@ -1,8 +1,8 @@
-package com.example.todo.TODO_LIST.Repository
+package com.example.todo.todonotes.Repository
 
 import androidx.lifecycle.LiveData
-import com.example.todo.TODO_LIST.Model.Item
-import com.example.todo.TODO_LIST.db.ItemDao
+import com.example.todo.todonotes.Model.db.entity.Item
+import com.example.todo.todonotes.Model.db.dao.ItemDao
 
 class ItemRepository(private val itemDao: ItemDao) {
 

@@ -1,9 +1,8 @@
-package com.example.todo.TODO_LIST.db
+package com.example.todo.todonotes.Model.db.dao
 
-import com.example.todo.TODO_LIST.Model.Item
+import com.example.todo.todonotes.Model.db.entity.Item
 import androidx.lifecycle.LiveData
 import androidx.room.*
-
 
 @Dao
 interface ItemDao {

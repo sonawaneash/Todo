@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TODO_LIST.View.UI.Fragments.NoteUpdateFragment">
+    tools:context=".todonotes.View.UI.Fragments.NoteUpdateFragment">
+
+    <include layout="@layout/headerfragment"
+        android:id="@+id/header1"
+        />
 
     <EditText
         android:id="@+id/updateTitle"
         android:padding="15sp"
+        android:layout_below="@id/header1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
@@ -18,8 +23,8 @@
         android:id="@+id/updateContent"
         android:padding="15sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/updateTitle"
+        android:layout_height="100sp"
         android:hint="Enter content"
 
         />
@@ -29,13 +34,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnUpdate"
         android:text="Update"
+        android:backgroundTint="@color/black"
         android:layout_below="@id/updateContent"
-        />
-
-    <TextView
-        android:id="@+id/display"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         />
 
 

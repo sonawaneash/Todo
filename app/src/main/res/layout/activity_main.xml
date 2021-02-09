@@ -5,19 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    tools:context=".TODO_LIST.View.UI.Main.MainActivity">
+    tools:context=".todonotes.View.UI.Main.MainActivity">
 
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/FragmentHeaderContainer"
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/FragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/FragmentHeaderContainer"/>
+        />
 
 
 </RelativeLayout>

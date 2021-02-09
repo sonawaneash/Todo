@@ -1,4 +1,4 @@
-package com.example.todo.TODO_LIST.UI
+package com.example.todo.todonotes.UI
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
-import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.Model.Note
-import com.example.todo.TODO_LIST.View.UI.Fragments.List_Fragment
+import com.example.todo.todonotes.View.UI.Fragments.ListFragment
 
 //Adapter class will adapt our data so that it can be displayed in a list
-class Adapter(private val listener: List_Fragment, private val allitems: ArrayList<Note>): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
-
-    //private val allitems: ArrayList<Item>()
+class Adapter(private val listener: ListFragment, private val allitems: ArrayList<Note>): RecyclerView.Adapter<Adapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(p: ViewGroup, viewType: Int): ItemViewHolder {
         val viewHolder = ItemViewHolder(LayoutInflater.from(p.context).inflate(R.layout.list_item, p, false) ) //inflate() turns layout file to view obj
@@ -23,9 +20,6 @@ class Adapter(private val listener: List_Fragment, private val allitems: ArrayLi
             listener.onItemDeleted(allitems[viewHolder.adapterPosition])
         }
 
-//        viewHolder.btnUpdate.setOnClickListener {
-  //          listener.onItemDeleted(allitems[viewHolder.adapterPosition])
-    //    }
 
         return  viewHolder
     }

@@ -1,21 +1,21 @@
-package com.example.todo.TODO_LIST.View.UI.Fragments
+package com.example.todo.todonotes.View.UI.Fragments
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.todo.R
-import com.example.todo.TODO_LIST.UI.Adapter
-import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
-import com.example.todo.TODO_LIST.View_Model.ItemViewModel
-import kotlinx.android.synthetic.main.fragment_list.*
+import com.example.todo.todonotes.View_Model.ItemViewModel
 import kotlinx.android.synthetic.main.fragment_note_update.*
+import kotlinx.android.synthetic.main.headerfragment.*
 
 
 class NoteUpdateFragment : Fragment() {
@@ -29,18 +29,22 @@ class NoteUpdateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Header.setText("Update Note")
 
         viewModel = ViewModelProvider(this).get(
             ItemViewModel::class.java)
 
+
         updateTitle.setText(arguments?.getString("title", ""))
         updateContent.setText(arguments?.getString("content", ""))
 
+
         btnUpdate.setOnClickListener{
             updatesubmit()
+            hideKeyboard()
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,6 +69,7 @@ class NoteUpdateFragment : Fragment() {
                 }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
+
         }
         else{
             if( updateTitle == uTitle)
@@ -81,7 +86,14 @@ class NoteUpdateFragment : Fragment() {
             }
         }
 
-
+    }
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+    @SuppressLint("ServiceCast")
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }

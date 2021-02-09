@@ -1,4 +1,4 @@
-package com.example.todo.TODO_LIST.View.UI.Fragments
+package com.example.todo.todonotes.View.UI.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,14 +12,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo.R
 import com.example.todo.TODO_LIST.Model.Note
-import com.example.todo.TODO_LIST.UI.Adapter
-import com.example.todo.TODO_LIST.UI.ItemClickAdapter
-import com.example.todo.TODO_LIST.View_Model.ItemViewModel
-import kotlinx.android.synthetic.main.fragment_header.*
+import com.example.todo.todonotes.Model.db.entity.Item
+import com.example.todo.todonotes.UI.Adapter
+import com.example.todo.todonotes.UI.ItemClickAdapter
+import com.example.todo.todonotes.View_Model.ItemViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
-class List_Fragment : Fragment(), ItemClickAdapter {
+class ListFragment : Fragment(), ItemClickAdapter {
 
     lateinit var viewModel : ItemViewModel
 
