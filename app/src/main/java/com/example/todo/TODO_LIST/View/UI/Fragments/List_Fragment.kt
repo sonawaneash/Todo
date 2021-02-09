@@ -47,11 +47,9 @@ class List_Fragment : Fragment(), ItemClickAdapter {
             }
         })
 
-
         btnAdd.setOnClickListener{
             val addFragment = NoteAddFragment()
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, addFragment)?.addToBackStack(null)?.commit()
-
         }
 
     }
@@ -76,7 +74,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         val bundle = bundleOf(Pair("id", item.id),Pair("title", item.title), Pair("content", item.content))
         updateFragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, updateFragment)?.addToBackStack(null)?.commit()
-        Toast.makeText(context, "$id Clicked", Toast.LENGTH_LONG).show()
+        //Toast.makeText(context, "$id Clicked", Toast.LENGTH_LONG).show()
     }
 
 
