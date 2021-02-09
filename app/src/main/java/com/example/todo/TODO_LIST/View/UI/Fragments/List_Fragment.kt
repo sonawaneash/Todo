@@ -27,6 +27,7 @@ class List_Fragment : Fragment(), ItemClickAdapter {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
     }
 
 

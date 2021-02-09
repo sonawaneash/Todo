@@ -45,7 +45,6 @@ class NoteAddFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_note_add, container, false)
 
-        headerText.setText("Add Item")
     }
 
 
@@ -67,6 +66,7 @@ class NoteAddFragment : Fragment() {
             builder.setTitle("Note Created Successfully")
             builder.setPositiveButton("OK"){dialogInterface, which ->
                 makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
+                activity?.supportFragmentManager?.popBackStack()
                 }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
