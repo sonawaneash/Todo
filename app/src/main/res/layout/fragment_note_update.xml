@@ -23,8 +23,8 @@
         android:id="@+id/updateContent"
         android:padding="15sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/updateTitle"
+        android:layout_height="100sp"
         android:hint="Enter content"
 
         />
@@ -34,13 +34,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnUpdate"
         android:text="Update"
+        android:backgroundTint="@color/black"
         android:layout_below="@id/updateContent"
-        />
-
-    <TextView
-        android:id="@+id/display"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         />
 
 

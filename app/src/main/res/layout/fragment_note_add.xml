@@ -24,20 +24,20 @@
         android:id="@+id/addNotecontent"
         android:padding="15sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100sp"
         android:layout_below="@id/addNotetitle"
         android:hint="Enter content"
 
         />
 
     <Button
+        android:id="@+id/saveNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/saveNote"
         android:layout_below="@id/addNotecontent"
-        android:layout_marginTop="100sp"
-        android:text="Save Data"
-        />
+        android:layout_marginTop="39dp"
+        android:backgroundTint="@color/black"
+        android:text="Save Data" />
 
 
 </RelativeLayout>

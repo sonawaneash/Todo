@@ -1,11 +1,15 @@
 package com.example.todo.todonotes.View.UI.Fragments
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.lifecycle.ViewModelProvider
@@ -22,7 +26,7 @@ class  NoteAddFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // Head.setText("Add Note")
+
 
 
     }
@@ -32,6 +36,7 @@ class  NoteAddFragment : Fragment() {
         Header.setText("Add Note")
         saveNote.setOnClickListener{
             submitData()
+            hideKeyboard()
         }
 
         viewModel = ViewModelProvider(this).get(
@@ -70,6 +75,14 @@ class  NoteAddFragment : Fragment() {
             alertDialog.show()
         }
 
+    }
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+    @SuppressLint("ServiceCast")
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }
