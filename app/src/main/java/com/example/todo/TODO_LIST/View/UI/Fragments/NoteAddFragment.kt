@@ -15,6 +15,7 @@ import com.example.todo.TODO_LIST.Model.Item
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
+import kotlinx.android.synthetic.main.fragment_header.*
 import kotlinx.android.synthetic.main.fragment_note_add.*
 
 
@@ -25,7 +26,6 @@ class  NoteAddFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,25 +34,17 @@ class  NoteAddFragment : Fragment() {
         saveNote.setOnClickListener{
             submitData()
         }
-        //this.setTitle("Create ToDo Note")
-        val adapter = Adapter(List_Fragment(), ArrayList())
 
         viewModel = ViewModelProvider(this).get(
             ItemViewModel::class.java)
-        viewModel.allItems.observe(viewLifecycleOwner, Observer {    // list can be nulluble
-                list -> list?.let{
-            adapter.updateList(it)      //update only when list not null
-        }
-
-        })
-
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_note_add, container, false)
+
     }
 
 
@@ -63,18 +55,18 @@ class  NoteAddFragment : Fragment() {
         if (itemText.isEmpty()) {
 
             builder.setTitle("Title Cannot be Empty")
-            builder.setPositiveButton("OK"){dialogInterface, which ->
-                Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
-            }
+            builder.setPositiveButton("OK"){dialogInterface, which -> }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
-      git      // Toast.makeText(this, "Title Cannot be Empty", Toast.LENGTH_LONG).show()
-        }else{
+
+        }
+        else{
             viewModel.insertItem((Item(itemText, itemContent)))
             builder.setTitle("Note Created Successfully")
             builder.setPositiveButton("OK"){dialogInterface, which ->
+                makeText(getActivity(),"Item Added", Toast.LENGTH_LONG).show()
                 activity?.supportFragmentManager?.popBackStack()
-            }
+                }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
         }

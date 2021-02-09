@@ -7,15 +7,11 @@
 
     <EditText
         android:id="@+id/addNotetitle"
-<<<<<<< HEAD
         android:padding="15sp"
-=======
->>>>>>> Fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
         android:hint="Enter Title"
-<<<<<<< HEAD
         />
 
     <EditText
@@ -36,28 +32,6 @@
         android:layout_marginTop="100sp"
         android:text="Save Data"
         />
-
-=======
-        android:padding="15sp" />
->>>>>>> Fragment
-
-    <EditText
-        android:id="@+id/addNotecontent"
-        android:padding="15sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/addNotetitle"
-        android:hint="Enter content"
-
-        />
-
-    <Button
-        android:id="@+id/saveNote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/addNotecontent"
-        android:layout_marginTop="100sp"
-        android:text="Save Data" />
 
 
 </RelativeLayout>

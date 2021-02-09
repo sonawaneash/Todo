@@ -16,9 +16,7 @@ class ItemViewModel(application : Application): AndroidViewModel(application) {
     val allItems: LiveData<List<Item>>
    
     val repository: ItemRepository
-
-
-
+    
     init{
         val dao = ItemDatabase.getDatabase(application).getItemDao()
         repository = ItemRepository(dao)
