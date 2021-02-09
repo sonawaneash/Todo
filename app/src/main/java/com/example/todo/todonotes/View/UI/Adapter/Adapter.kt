@@ -1,4 +1,4 @@
-package com.example.todo.TODO_LIST.UI
+package com.example.todo.todonotes.UI
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
-import com.example.todo.TODO_LIST.Model.Item
-import com.example.todo.TODO_LIST.View.UI.Fragments.List_Fragment
+import com.example.todo.todonotes.Model.db.entity.Item
+import com.example.todo.todonotes.View.UI.Fragments.List_Fragment
 
 //Adapter class will adapt our data so that it can be displayed in a list
 class Adapter(private val listener: List_Fragment, private val allitems: ArrayList<Item>): RecyclerView.Adapter<Adapter.ItemViewHolder>() {

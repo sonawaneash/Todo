@@ -3,10 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TODO_LIST.View.UI.Fragments.NoteAddFragment">
+    tools:context=".todonotes.View.UI.Fragments.NoteAddFragment">
+
+    <include layout="@layout/headerfragment"
+        android:id="@+id/header1"
+
+        />
 
     <EditText
         android:id="@+id/addNotetitle"
+        android:layout_below="@+id/header1"
         android:padding="15sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.todo.TODO_LIST.View.UI.Fragments
+package com.example.todo.todonotes.View.UI.Fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -8,15 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.makeText
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.todo.R
-import com.example.todo.TODO_LIST.Model.Item
-import com.example.todo.TODO_LIST.UI.Adapter
-import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
-import com.example.todo.TODO_LIST.View_Model.ItemViewModel
-import kotlinx.android.synthetic.main.fragment_header.*
+import com.example.todo.todonotes.Model.db.entity.Item
+import com.example.todo.todonotes.View_Model.ItemViewModel
 import kotlinx.android.synthetic.main.fragment_note_add.*
+import kotlinx.android.synthetic.main.headerfragment.*
 
 
 class  NoteAddFragment : Fragment() {
@@ -25,12 +22,14 @@ class  NoteAddFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+       // Head.setText("Add Note")
+
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Header.setText("Add Note")
         saveNote.setOnClickListener{
             submitData()
         }
@@ -74,3 +73,4 @@ class  NoteAddFragment : Fragment() {
     }
 
 }
+

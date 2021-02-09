@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TODO_LIST.View.UI.Fragments.List_Fragment">
+    android:layout_marginTop="0sp"
+    tools:context=".todonotes.View.UI.Fragments.List_Fragment">
+
+    <include layout="@layout/headerfragment"
+        android:id="@+id/header" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/header"
         android:id="@+id/recyclerView"
         android:layout_margin="5dp"
         android:orientation="vertical"
@@ -26,5 +31,7 @@
         android:padding="10dp"
         android:src="@drawable/ic_baseline_add"
         />
+
+
 
 </RelativeLayout>

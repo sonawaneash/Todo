@@ -5,24 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    tools:context=".TODO_LIST.View.UI.Main.MainActivity">
+    tools:context=".todonotes.View.UI.Main.MainActivity">
 
 
-    <androidx.fragment.app.FragmentContainerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/FragmentHeaderContainer"
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
+
 
     <androidx.fragment.app.FragmentContainerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/FragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/FragmentHeaderContainer"/>
-
-
-
+       />
 
 
 

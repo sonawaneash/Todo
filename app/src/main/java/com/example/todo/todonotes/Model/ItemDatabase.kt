@@ -1,15 +1,16 @@
-package com.example.todo.TODO_LIST.db
+package com.example.todo.todonotes.Model
 
-import com.example.todo.TODO_LIST.Model.Item
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.todo.todonotes.Model.db.dao.ItemDao
+import com.example.todo.todonotes.Model.db.entity.Item
 
 @Database(entities = arrayOf(Item::class), version = 1)
  abstract class ItemDatabase : RoomDatabase() {
 
-    abstract fun getItemDao():ItemDao
+    abstract fun getItemDao(): ItemDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the
