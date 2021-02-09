@@ -60,21 +60,20 @@ class NoteUpdateFragment : Fragment() {
 
 
         if (updateTitle.isNullOrEmpty() || id == -1) {
-            builder.setTitle("Update Note Title Cannot be Empty")
+            builder.setTitle(getString(R.string.empty_error_msg))
             builder.setPositiveButton("OK"){dialogInterface, which ->
-                Toast.makeText(getActivity(),"clicked yes", Toast.LENGTH_LONG).show()
-            }
+                }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
         }
         else{
             if( updateTitle == uTitle)
-                Toast.makeText(activity,"Data not Changed", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity,getString(R.string.update_error_msg), Toast.LENGTH_LONG).show()
             else {
                 viewModel.updateItem(id!!, updateTitle, updateContent)
-                builder.setTitle("Note Updated Successfully")
+                builder.setTitle(getString(R.string.update_success_msg))
                 builder.setPositiveButton("OK") { dialogInterface, which ->
-                    Toast.makeText(getActivity(), "Item Updated", Toast.LENGTH_LONG).show()
+                    Toast.makeText(getActivity(), getString(R.string.update_success_msg), Toast.LENGTH_LONG).show()
                     activity?.supportFragmentManager?.popBackStack()
                 }
                 val alertDialog: AlertDialog = builder.create()

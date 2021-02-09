@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".TODO_LIST.View.UI.Fragments.NoteAddFragment">
 
+
+
     <EditText
         android:id="@+id/addNotetitle"
         android:padding="15sp"

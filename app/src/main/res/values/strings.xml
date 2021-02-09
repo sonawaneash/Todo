@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Todo</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="empty_error_msg">Title Cannot be Empty</string>
+    <string name="delete_success_msg">Successfully Deleted</string>
+    <string name="update_success_msg">Successfully Updated</string>
+    <string name="add_success_msg">Successfully Created</string>
+
+    <string name="update_error_msg">Data not Changed</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

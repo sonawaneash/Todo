@@ -21,9 +21,6 @@ class MainActivity : AppCompatActivity()  {
 
         if(savedInstanceState == null){
 
-            val header = HeaderFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.FragmentHeaderContainer, header).commit()
-
             val listFragment = List_Fragment()
             supportFragmentManager.beginTransaction().replace(R.id.FragmentContainer, listFragment).commit()
 

@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.todo.R
 import com.example.todo.TODO_LIST.Model.Item
+import com.example.todo.TODO_LIST.Model.Note
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.View.UI.Main.MainActivity
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
@@ -54,16 +55,16 @@ class NoteAddFragment : Fragment() {
         val builder = AlertDialog.Builder(activity)
         if (itemText.isEmpty()) {
 
-            builder.setTitle("Title Cannot be Empty")
+            builder.setTitle(getString(R.string.empty_error_msg))
             builder.setPositiveButton("OK"){dialogInterface, which -> }
             val alertDialog: AlertDialog = builder.create()
             alertDialog.show()
         }
         else{
-            viewModel.insertItem((Item(itemText, itemContent)))
-            builder.setTitle("Note Created Successfully")
+            viewModel.insertItem((Note(itemText, itemContent)))
+            builder.setTitle(getString(R.string.add_success_msg))
             builder.setPositiveButton("OK"){dialogInterface, which ->
-                makeText(getActivity(),"Item Added", Toast.LENGTH_LONG).show()
+                makeText(getActivity(),getString(R.string.add_success_msg), Toast.LENGTH_LONG).show()
                 activity?.supportFragmentManager?.popBackStack()
                 }
             val alertDialog: AlertDialog = builder.create()

@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo.R
-import com.example.todo.TODO_LIST.Model.Item
+import com.example.todo.TODO_LIST.Model.Note
 import com.example.todo.TODO_LIST.UI.Adapter
 import com.example.todo.TODO_LIST.UI.ItemClickAdapter
 import com.example.todo.TODO_LIST.View_Model.ItemViewModel
@@ -41,7 +41,8 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         viewModel.allItems.observe(viewLifecycleOwner, Observer {    // list can be nulluble
                 list ->
             list?.let {
-                adapter.updateList(it)      //update only when list not null
+                var noteList = Note.convertItemListToNoteList(ArrayList(it))
+                adapter.updateList(noteList)      //update only when list not null
             }
         })
 
@@ -60,19 +61,18 @@ class List_Fragment : Fragment(), ItemClickAdapter {
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
-    override fun onItemDeleted(item: Item) {
-        viewModel.deleteItem(item)
-        Toast.makeText(getActivity(), "Successfully Deleted", Toast.LENGTH_LONG).show()
+    override fun onItemDeleted(note: Note) {
+        viewModel.deleteItem(note)
+        Toast.makeText(getActivity(), getString(R.string.delete_success_msg), Toast.LENGTH_LONG).show()
 
     }
 
-    override fun onItemUpdated(item: Item) {
+    override fun onItemUpdated(note: Note) {
 
         val updateFragment = NoteUpdateFragment()
-        val bundle = bundleOf(Pair("id", item.id),Pair("title", item.title), Pair("content", item.content))
+        val bundle = bundleOf(Pair("id", note.id),Pair("title", note.title), Pair("content", note.content))
         updateFragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.FragmentContainer, updateFragment)?.addToBackStack(null)?.commit()
-        //Toast.makeText(context, "$id Clicked", Toast.LENGTH_LONG).show()
     }
 
 
